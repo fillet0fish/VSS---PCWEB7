@@ -4,11 +4,12 @@ import { Button, Container, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import Navigation from "../components/Navigation"
+import '../login.css';
 
 export default function SignUpPage() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const setError = useState("");
+    const [error, setError] = useState("");
     const navigate = useNavigate();
     const sysname = "sys@sys.com";
   
@@ -41,7 +42,6 @@ export default function SignUpPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <a href="/contactadmin">Contact our System Administration to sign up for an account</a>
             </Form.Group>
 
             {/* Sign in -> HomePage */}
@@ -63,7 +63,7 @@ export default function SignUpPage() {
               }else if(canLogin){
                 try {
                   await signInWithEmailAndPassword(auth, username,password);
-                  navigate("/");
+                  navigate("/homepage");
                 } catch (error){
                   setError(error.message)
                 }
@@ -71,6 +71,8 @@ export default function SignUpPage() {
             }}>
               Login
             </Button>
+
+            <a href="/contactadmin">No account? Contact our System Administration to sign up for an account</a>
           </Form>
           <p></p>
         </Container>

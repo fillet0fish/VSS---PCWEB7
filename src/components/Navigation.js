@@ -11,7 +11,7 @@ export default function Navigation() {
           {/* <Nav.Link href="/add">New Post</Nav.Link> */}
           <Nav.Link onClick={(e) => signOut(auth)}>Sign Out 🚪 </Nav.Link>
         </Nav>
-      </Container>
+        </Container>
     </Navbar>
   );
 }

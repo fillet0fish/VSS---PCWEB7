@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
-import { Container, Row } from "react-bootstrap";
-import { collection, getDocs, getFirestore, query, limit } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { Container, Row, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Navigation from "../components/Navigation";
+import { collection, getDocs, getFirestore, query, limit } from "firebase/firestore";
+import { auth } from "../firebase";
+import { signOut } from "firebase/auth";
+import '../homepage.css';
 
 export default function PostPageHome() {
   const [collections, setCollections] = useState([]);
@@ -40,21 +42,34 @@ export default function PostPageHome() {
   }, []);
 
   const CollectionRow = () => {
-    return Object.entries(firstDocuments).map(([collectionId, imageUrl], index) => (
-      <div key={index}>
-        <h2>{collectionId}</h2>
-        <ul>
-          <li>
-          {imageUrl && <Link to={`/admincollection/${collectionId}`}><img src={imageUrl} alt={`Image for ${collectionId}`} /></Link>}
-          </li>
-        </ul>
+    return (
+      <div className="horizontal-collection-row">
+        {Object.entries(firstDocuments).map(([collectionId, imageUrl], index) => (
+          <div key={index} className="collection-item">
+            {imageUrl && (
+              <Link to={`/detailspage/${collectionId}`}>
+                <img src={imageUrl} alt={`Image for ${collectionId}`} />
+                <h2>{collectionId}</h2>
+              </Link>
+            )}
+          </div>
+        ))}
       </div>
-    ));
+    );
   };
 
   return (
     <>
-      <Navigation />
+      <Navbar variant="dark" bg="dark">
+        <Container>
+          <Navbar.Brand href="/">Data Management</Navbar.Brand>
+          <Nav>
+            <Nav.Link href="/adminsignup">New account</Nav.Link>
+            <Nav.Link onClick={(e) => signOut(auth)}>Sign Out 🚪 </Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
+      <h1 className="my-3 move-left-to-right">!! Admin Account !!</h1>
       <Container>
         <Row>
           <CollectionRow />
