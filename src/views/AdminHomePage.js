@@ -45,7 +45,7 @@ export default function PostPageHome() {
         <h2>{collectionId}</h2>
         <ul>
           <li>
-          {imageUrl && <Link to={`/collection/${collectionId}`}><img src={imageUrl} alt={`Image for ${collectionId}`} /></Link>}
+          {imageUrl && <Link to={`/admincollection/${collectionId}`}><img src={imageUrl} alt={`Image for ${collectionId}`} /></Link>}
           </li>
         </ul>
       </div>

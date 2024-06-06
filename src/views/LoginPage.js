@@ -8,8 +8,9 @@ import Navigation from "../components/Navigation"
 export default function SignUpPage() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
+    const setError = useState("");
     const navigate = useNavigate();
+    const sysname = "sys@sys.com";
   
   
     return (
@@ -30,7 +31,8 @@ export default function SignUpPage() {
                 We'll never share your email with anyone else.
               </Form.Text>
             </Form.Group>
-    
+
+            {/* Direct User to contact admin for sign up */}
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
@@ -41,12 +43,24 @@ export default function SignUpPage() {
               />
               <a href="/contactadmin">Contact our System Administration to sign up for an account</a>
             </Form.Group>
+
+            {/* Sign in -> HomePage */}
             <Button 
             variant="primary" 
             onClick={async (e) => {
               setError("");
               const canLogin = username && password;
-              if (canLogin){
+              const sysLogin = sysname && password;
+
+              if (sysLogin){
+                try {
+                    await signInWithEmailAndPassword(auth, username,password);
+                    navigate("/adminhomepage");
+                  } catch (error){
+                    setError(error.message)
+                  }
+
+              }else if(canLogin){
                 try {
                   await signInWithEmailAndPassword(auth, username,password);
                   navigate("/");

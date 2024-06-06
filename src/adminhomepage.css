@@ -1,0 +1,27 @@
+.AdminHomePage.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* adjust the height to your liking */
+    margin-top: 50px; /* add some margin top for better visibility */
+  }
+  
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .button-group button {
+    font-size: 24px; /* increase font size */
+    padding: 15px 30px; /* increase padding for a bigger button */
+    margin: 10px; /* add some margin between buttons */
+    border-radius: 10px; /* add some rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* add some box shadow */
+  }
+  
+  .button-group button:hover {
+    background-color: #333; /* change background color on hover */
+    color: #fff; /* change text color on hover */
+    cursor: pointer; /* add a pointer cursor on hover */
+  }
