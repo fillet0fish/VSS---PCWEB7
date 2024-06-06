@@ -1,0 +1,26 @@
+@keyframes moveLeftToRight {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
+  }
+  
+  .move-left-to-right {
+    animation: moveLeftToRight 10s ease-out; /* Adjust duration and timing function as needed */
+  }
+  
+  .horizontal-collection-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .collection-item {
+    flex-basis: 30%; /* Adjust width of each collection item */
+  }
+  
+  .collection-item img {
+    width: 100%; /* Ensure image fills its container */
+  }
+  
+  .collection-item h2 {
+    text-align: center; /* Center align the collection name */
+  }
+  

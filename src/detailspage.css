@@ -1,0 +1,54 @@
+.upload-form-grid-box {
+    display: grid;
+    place-items: center; /* Center the content */
+    border: 2px solid #ccc; /* Border style */
+    padding: 20px; /* Add padding */
+    margin-top: 20px; /* Add margin to separate from images */
+  }
+  
+  .details-page-upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .details-page-upload-form input[type="file"] {
+    margin-bottom: 10px;
+  }
+  
+  .details-page-upload-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .details-page-upload-form button:hover {
+    background-color: #0056b3;
+  }
+
+  .details-page-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 3 columns, each with a minimum width of 200px */
+    gap: 20px; /* Gap between columns */
+  }
+  
+  .details-page-image-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 100%; /* Create a square aspect ratio */
+  }
+  
+  .details-page-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the entire container */
+  }
+  
+  
